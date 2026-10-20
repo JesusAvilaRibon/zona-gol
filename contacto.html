@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Zona Gol: reserva canchas sintéticas en Sahagún, Córdoba. Busca, compara y reserva en minutos.">
+  <meta name="theme-color" content="#08100c">
+  <title>Zona Gol</title>
+  <link rel="icon" href="assets/img/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.png" alt="Logo Zona Gol" width="40" height="40">
+      <span>Zona <em>Gol</em></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
+    <nav id="menu" class="main-nav" aria-label="Principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="canchas.html">Canchas</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a class="btn btn-sm" href="reserva.html">Reservar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenido">
+<section id="contacto" aria-labelledby="contacto-titulo">
+  <header class="contact-header">
+    <h1 id="contacto-titulo">CONTACTO</h1>
+    <p>Si tienes preguntas, dudas o sugerencias, por favor, comunícate con nosotros.</p>
+  </header>
+
+  <div class="contact-content">
+    <div class="contact-form">
+      <h2>Queremos escucharte</h2>
+
+      <form action="#" method="post">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Nombres y apellidos" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" name="correo" placeholder="zonagol@gmail.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Teléfono / Whatsapp</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="3226548921">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="asunto">Asunto</label>
+          <input type="text" id="asunto" name="asunto" placeholder="Asunto" required>
+        </div>
+
+        <div class="form-group">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" placeholder="Escribe aquí tu mensaje" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">ENVIAR</button>
+      </form>
+
+      <p class="contact-message">Gracias por comunicarte con nosotros. Nuestro equipo revisará tu mensaje y te responderá en un plazo no mayor a 48 horas a través de tu correo o número telefónico. Estamos comprometidos en ofrecerte el mejor servicio.</p>
+    </div>
+
+    <div class="contact-image">
+      <img src="assets/img/contacto.png" alt="Imagen de contacto">
+    </div>
+  </div>
+</section>
+  </main>
+
+  <footer class="site-footer">
+    <section class="footer__brand" aria-label="Zona Gol">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.png" alt="Logo Zona Gol" width="40" height="40" loading="lazy">
+        <span>Zona <em>Gol</em></span>
+      </a>
+      <p>La plataforma de reservas de canchas sintéticas en Sahagún, Córdoba.</p>
+    </section>
+    <nav aria-label="Pie de página">
+      <h2>Navegación</h2>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="canchas.html">Canchas</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+    <section aria-label="Contacto y redes">
+      <h2>Contacto</h2>
+      <address>
+        <a href="tel:+573001234567"><i class="fa-solid fa-phone" aria-hidden="true"></i> +57 300 123 4567</a>
+        <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Sahagún, Córdoba</span>
+      </address>
+      <ul class="social">
+        <li><a href="https://www.instagram.com/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+        <li><a href="https://www.facebook.com/" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+        <li><a href="https://www.tiktok.com/" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a></li>
+      </ul>
+    </section>
+    <p class="footer__legal"><small>© <span id="anio">2026</span> Zona Gol. Todos los derechos reservados. Sahagún, Córdoba · Colombia</small></p>
+  </footer>
+
+  <a class="fab" href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+  </a>
+</body>
+</html>
