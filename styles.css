@@ -1,0 +1,102 @@
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Outfit", sans-serif;
+  line-height: 1.6;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+ul { list-style: none; margin: 0; padding: 0; }
+a { text-decoration: none; color: inherit; }
+
+/* Contenedor centrado para todas las secciones */
+main > section {
+  padding: 2rem 1.25rem;
+  max-width: 72rem;
+  margin-inline: auto;
+}
+
+/* ---------- Header y nav (Flexbox) ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #ccc;
+}
+.brand { display: flex; align-items: center; gap: 0.5rem; }
+.main-nav ul { display: flex; flex-direction: column; gap: 0.5rem; }
+.main-nav a { display: block; padding: 0.5rem; }
+
+/* Botón menú móvil */
+.menu-toggle { display: inline-flex; padding: 0.5rem; background: none; border: 1px solid #ccc; }
+.js .main-nav { display: none; }
+.js .main-nav.is-open { display: block; width: 100%; }
+
+/* ---------- Tarjetas (Grid) ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+/* ---------- Formulario (Grid) ---------- */
+.form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.field { display: flex; flex-direction: column; gap: 0.3rem; }
+.field--full { grid-column: 1 / -1; }
+
+/* ---------- Contacto (Grid) ---------- */
+.contact-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+.contact-list a { display: flex; flex-direction: column; gap: 0.3rem; padding: 1rem; border: 1px solid #ccc; }
+
+/* ---------- Footer (Grid) ---------- */
+.site-footer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2rem 1.25rem;
+  border-top: 1px solid #ccc;
+}
+
+/* ---------- Breakpoint 1: Tablet ≥ 600px ---------- */
+@media (min-width: 600px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .form { grid-template-columns: repeat(2, 1fr); }
+  .contact-list { grid-template-columns: repeat(3, 1fr); }
+  .site-footer { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Breakpoint 2: Escritorio ≥ 900px ---------- */
+@media (min-width: 900px) {
+  .js .menu-toggle { display: none; }
+  .js .main-nav { display: block; width: auto; }
+  .main-nav ul { flex-direction: row; align-items: center; }
+  .cards { grid-template-columns: repeat(3, 1fr); }
+  .site-footer { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---------- Breakpoint 3: Pantalla grande ≥ 1200px ---------- */
+@media (min-width: 1200px) {
+  main > section { padding-block: 4rem; }
+}
