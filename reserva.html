@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Zona Gol: reserva canchas sintéticas en Sahagún, Córdoba. Busca, compara y reserva en minutos.">
+  <meta name="theme-color" content="#08100c">
+  <title>Zona Gol</title>
+  <link rel="icon" href="assets/img/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.png" alt="Logo Zona Gol" width="40" height="40">
+      <span>Zona <em>Gol</em></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+      <i class="fa-solid fa-bars" aria-hidden="true"></i>
+    </button>
+    <nav id="menu" class="main-nav" aria-label="Principal">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="canchas.html">Canchas</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a class="btn btn-sm" href="reserva.html">Reservar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section id="reservar" class="alt" aria-labelledby="reservar-titulo">
+      <header class="section-head">
+        <p class="kicker">Solicitud de reserva</p>
+        <h2 id="reservar-titulo">Reserva tu cancha</h2>
+      </header>
+
+      <div class="split">
+        <form class="form" action="#" method="post">
+          <label class="field field--full">
+            <span>Cancha</span>
+            <select name="cancha" required>
+              <option value="">Selecciona una cancha</option>
+              <option>Cancha Bernabéu (5 vs 5)</option>
+              <option>Cancha Metropolitano (7 vs 7)</option>
+              <option>Cancha La Norteña (11 vs 11)</option>
+            </select>
+          </label>
+          <label class="field field--full">
+            <span>Nombre completo</span>
+            <input type="text" name="nombre" placeholder="Tu nombre" required minlength="3" maxlength="60"
+                   pattern="[A-Za-zÁÉÍÓÚÜÑáéíóúüñ ]{3,60}" title="Solo letras y espacios (mínimo 3 caracteres)" autocomplete="name">
+          </label>
+          <label class="field">
+            <span>Teléfono / WhatsApp</span>
+            <input type="tel" name="telefono" placeholder="+57 300 000 0000" required
+                   pattern="(\+57\s?)?3\d{2}\s?\d{3}\s?\d{4}" title="Celular colombiano. Ej: +57 300 123 4567" autocomplete="tel">
+          </label>
+          <label class="field">
+            <span>Correo electrónico</span>
+            <input type="email" name="correo" placeholder="correo@ejemplo.com" required autocomplete="email">
+          </label>
+          <label class="field">
+            <span>Fecha</span>
+            <input type="date" id="fecha-reserva" name="fecha" min="2026-10-08" max="2027-12-31" required>
+          </label>
+          <label class="field">
+            <span>Número de jugadores</span>
+            <input type="number" name="jugadores" min="2" max="22" value="10" required>
+          </label>
+          <fieldset class="field--full times">
+            <legend>Horario (entre 7:00 AM y 11:00 PM)</legend>
+            <label class="field">
+              <span>Hora de inicio</span>
+              <input type="time" name="inicio" min="07:00" max="22:00" step="3600" required>
+            </label>
+            <label class="field">
+              <span>Hora de finalización</span>
+              <input type="time" name="fin" min="08:00" max="23:00" step="3600" required>
+            </label>
+          </fieldset>
+          <label class="field field--full">
+            <span>Comentarios (opcional)</span>
+            <textarea name="comentarios" rows="3" maxlength="300" placeholder="¿Algo que debamos saber?"></textarea>
+          </label>
+          <label class="check field--full">
+            <input type="checkbox" name="acepto" required>
+            <span>Acepto que me contacten para confirmar la disponibilidad.</span>
+          </label>
+          <button class="btn btn-lg field--full" type="submit">Solicitar reserva</button>
+        </form>
+
+        <aside class="panel" aria-labelledby="tarifas-titulo">
+          <h3 id="tarifas-titulo">Tarifas por hora</h3>
+          <table>
+            <caption class="sr-only">Precio por hora de cada cancha</caption>
+            <thead><tr><th scope="col">Cancha</th><th scope="col">Precio</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Bernabéu (5 vs 5)</th><td>$60.000</td></tr>
+              <tr><th scope="row">Metropolitano (7 vs 7)</th><td>$90.000</td></tr>
+              <tr><th scope="row">La Norteña (11 vs 11)</th><td>$150.000</td></tr>
+            </tbody>
+          </table>
+          <p class="note"><i class="fa-regular fa-clock" aria-hidden="true"></i> Confirmación en menos de 1 hora.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <section class="footer__brand" aria-label="Zona Gol">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.png" alt="Logo Zona Gol" width="40" height="40" loading="lazy">
+        <span>Zona <em>Gol</em></span>
+      </a>
+      <p>La plataforma de reservas de canchas sintéticas en Sahagún, Córdoba.</p>
+    </section>
+    <nav aria-label="Pie de página">
+      <h2>Navegación</h2>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="canchas.html">Canchas</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+    <section aria-label="Contacto y redes">
+      <h2>Contacto</h2>
+      <address>
+        <a href="tel:+573001234567"><i class="fa-solid fa-phone" aria-hidden="true"></i> +57 300 123 4567</a>
+        <span><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Sahagún, Córdoba</span>
+      </address>
+      <ul class="social">
+        <li><a href="https://www.instagram.com/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a></li>
+        <li><a href="https://www.facebook.com/" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a></li>
+        <li><a href="https://www.tiktok.com/" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a></li>
+      </ul>
+    </section>
+    <p class="footer__legal"><small>© <span id="anio">2026</span> Zona Gol. Todos los derechos reservados. Sahagún, Córdoba · Colombia</small></p>
+  </footer>
+
+  <a class="fab" href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+  </a>
+</body>
+</html>
