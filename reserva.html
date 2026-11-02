@@ -43,7 +43,7 @@
       </header>
 
       <div class="split">
-        <form class="form" action="#" method="post">
+        <form class="form" id="form-reserva" action="#" method="post" novalidate>
           <label class="field field--full">
             <span>Cancha</span>
             <select name="cancha" required>
@@ -97,6 +97,11 @@
           <button class="btn btn-lg field--full" type="submit">Solicitar reserva</button>
           <p class="note"><i class="fa-regular fa-clock" aria-hidden="true"></i> Confirmación en menos de 1 hora.</p>
         </form>
+      <aside class="panel" aria-labelledby="mis-reservas-titulo">
+           <h3 id="mis-reservas-titulo">Mis reservas</h3>
+           <p id="sin-reservas">Aún no tienes reservas guardadas.</p>
+           <ul id="lista-reservas" class="reservas"></ul>
+      </aside>
       </div>
     </section>
   </main>
