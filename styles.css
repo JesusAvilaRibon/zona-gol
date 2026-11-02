@@ -35,9 +35,11 @@ main > section {
 .main-nav a { display: block; padding: 0.5rem; }
 
 /* Botón menú móvil */
-.menu-toggle { display: inline-flex; padding: 0.5rem; background: none; border: 1px solid #ccc; }
-.js .main-nav { display: none; }
-.js .main-nav.is-open { display: block; width: 100%; }
+.menu-toggle { display: inline-flex; padding: 0.5rem; background: none; border: 1px solid #ccc; cursor: pointer; }
+@media (max-width: 899px) {
+  .js .main-nav { display: none; }
+  .js .main-nav.is-open { display: block; width: 100%; }
+}
 
 /* ---------- Tarjetas (Grid) ---------- */
 .cards {
@@ -89,8 +91,7 @@ main > section {
 
 /* ---------- Breakpoint 2: Escritorio ≥ 900px ---------- */
 @media (min-width: 900px) {
-  .js .menu-toggle { display: none; }
-  .js .main-nav { display: block; width: auto; }
+  .menu-toggle { display: none; }
   .main-nav ul { flex-direction: row; align-items: center; }
   .cards { grid-template-columns: repeat(3, 1fr); }
   .site-footer { grid-template-columns: repeat(3, 1fr); }
