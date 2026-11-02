@@ -40,71 +40,15 @@
         <p class="kicker">Sahagún, Córdoba</p>
         <h2 id="canchas-titulo">Canchas en Sahagún</h2>
       </header>
-
-      <div class="cards">
-        <article class="card">
-          <figure>
-            <img src="https://images.unsplash.com/photo-1704633785114-52104ce3d626?w=800&h=520&fit=crop&auto=format"
-                 srcset="https://images.unsplash.com/photo-1704633785114-52104ce3d626?w=480&h=312&fit=crop&auto=format 480w, https://images.unsplash.com/photo-1704633785114-52104ce3d626?w=800&h=520&fit=crop&auto=format 800w"
-                 sizes="(min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw"
-                 alt="Cancha sintética Bernabéu con iluminación" width="800" height="520" loading="lazy">
-            <figcaption class="badge">5 vs 5</figcaption>
-          </figure>
-          <div class="card__body">
-            <header class="card__head">
-              <h3>Cancha Bernabéu</h3>
-              <p class="price"><strong>$60.000</strong> <small>/hora</small></p>
-            </header>
-            <h4>Horas disponibles</h4>
-            <ul class="chips">
-              <li><time datetime="08:00">08:00</time></li><li><time datetime="09:00">09:00</time></li><li><time datetime="10:00">10:00</time></li><li><time datetime="14:00">14:00</time></li><li><time datetime="15:00">15:00</time></li><li class="chip--more">+2</li>
-            </ul>
-            <a class="btn btn-outline" href="reserva.html">Reservar cancha</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <figure>
-            <img src="https://images.unsplash.com/photo-1630420598913-44208d36f9af?w=800&h=520&fit=crop&auto=format"
-                 srcset="https://images.unsplash.com/photo-1630420598913-44208d36f9af?w=480&h=312&fit=crop&auto=format 480w, https://images.unsplash.com/photo-1630420598913-44208d36f9af?w=800&h=520&fit=crop&auto=format 800w"
-                 sizes="(min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw"
-                 alt="Cancha sintética Metropolitano con tribuna lateral" width="800" height="520" loading="lazy">
-            <figcaption class="badge">7 vs 7</figcaption>
-          </figure>
-          <div class="card__body">
-            <header class="card__head">
-              <h3>Cancha Metropolitano</h3>
-              <p class="price"><strong>$90.000</strong> <small>/hora</small></p>
-            </header>
-            <h4>Horas disponibles</h4>
-            <ul class="chips">
-              <li><time datetime="07:00">07:00</time></li><li><time datetime="11:00">11:00</time></li><li><time datetime="13:00">13:00</time></li><li><time datetime="16:00">16:00</time></li><li><time datetime="17:00">17:00</time></li><li class="chip--more">+1</li>
-            </ul>
-            <a class="btn btn-outline" href="reserva.html">Reservar cancha</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <figure>
-            <img src="https://images.unsplash.com/photo-1517747614396-d21a78b850e8?w=800&h=520&fit=crop&auto=format"
-                 srcset="https://images.unsplash.com/photo-1517747614396-d21a78b850e8?w=480&h=312&fit=crop&auto=format 480w, https://images.unsplash.com/photo-1517747614396-d21a78b850e8?w=800&h=520&fit=crop&auto=format 800w"
-                 sizes="(min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw"
-                 alt="Cancha La Norteña de medidas reglamentarias" width="800" height="520" loading="lazy">
-            <figcaption class="badge">11 vs 11</figcaption>
-          </figure>
-          <div class="card__body">
-            <header class="card__head">
-              <h3>Cancha La Norteña</h3>
-              <p class="price"><strong>$150.000</strong> <small>/hora</small></p>
-            </header>
-            <h4>Horas disponibles</h4>
-            <ul class="chips">
-              <li><time datetime="08:00">08:00</time></li><li><time datetime="10:00">10:00</time></li><li><time datetime="15:00">15:00</time></li><li><time datetime="18:00">18:00</time></li><li><time datetime="20:00">20:00</time></li>
-            </ul>
-            <a class="btn btn-outline" href="reserva.html">Reservar cancha</a>
-          </div>
-        </article>
-      </div>
+          <form class="toolbar" id="filtros" role="search" aria-label="Filtrar canchas">
+            <label class="field"><span>Buscar</span><input type="search" id="buscar" name="buscar" placeholder="Nombre de la cancha"></label>
+            <label class="field"><span>Modalidad</span>
+            <select id="modalidad" name="modalidad"><option value="">Todas</option><option>5 vs 5</option><option>7 vs 7</option><option>11 vs 11</option></select></label>
+            <label class="field"><span>Precio máximo</span><input type="number" id="precio" name="precio" min="0" step="10000" placeholder="150000"></label>
+           <button class="btn btn-outline" type="reset">Limpiar</button>
+        </form>
+      <p id="estado" class="estado"></p>
+    <div class="cards" id="lista-canchas"></div>
     </section>
   </main>
   <footer class="site-footer">
