@@ -1,6 +1,6 @@
 // validacion.js — Validación en tiempo real con retroalimentación visual
 
-import { crear } from ".js/ui.js";
+import { crear } from "./ui.js";
 
 export const hoy = () => new Date().toLocaleDateString("en-CA"); // AAAA-MM-DD en hora local
 const minutos = (h) => { const [hh, mm] = h.split(":").map(Number); return hh * 60 + mm; };
