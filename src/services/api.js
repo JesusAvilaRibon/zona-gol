@@ -1,8 +1,8 @@
-// api.js — Peticiones HTTP con Fetch + async/await y manejo de códigos de estado
+// services/api.js — Peticiones HTTP con Fetch + async/await y manejo de códigos de estado
 
-const URL_CANCHAS = "data.json";                                   // archivo local estructurado
+const URL_CANCHAS = `${import.meta.env.BASE_URL}data.json`;       // archivo local estructurado (carpeta public/)
 const URL_CONTACTO = "https://jsonplaceholder.typicode.com/posts"; // API REST pública (simulada)
-const RETARDO_MS = 600; // simula una red lenta para que se vea el loader. Ponlo en 0 al final.
+const RETARDO_MS = 500; // simula una red lenta para que se vea el loader
 
 const esperar = (ms) => new Promise((resolver) => setTimeout(resolver, ms));
 
@@ -32,13 +32,6 @@ export async function obtenerCanchas() {
   return pedir(URL_CANCHAS);
 }
 
-export async function obtenerCancha(id) {
-  const canchas = await obtenerCanchas();
-  const cancha = canchas.find((c) => c.id === id);
-  if (!cancha) throw new ErrorHTTP(404);
-  return cancha;
-}
-
 // POST con JSON. JSONPlaceholder responde 201 y no guarda nada de verdad.
 export function enviarContacto(datos) {
   return pedir(URL_CONTACTO, {
@@ -46,4 +39,13 @@ export function enviarContacto(datos) {
     headers: { "Content-Type": "application/json; charset=UTF-8" },
     body: JSON.stringify({ title: datos.asunto, body: datos.mensaje, userId: 1 }),
   });
+}
+
+// Mensaje entendible para el usuario según el tipo de error
+export function describirError(error) {
+  if (!error) return "";
+  if (error.estado) return `${error.message} (código ${error.estado})`;
+  if (error instanceof TypeError) return "No hay conexión con el servidor. Revisa tu internet.";
+  if (error instanceof SyntaxError) return "Los datos recibidos no tienen un formato válido.";
+  return error.message;
 }

@@ -4,6 +4,7 @@
    Contenido: 1 Base · 2 Botones · 3 Header · 4 Secciones y hero · 5 Tarjetas
               6 Estados y avisos · 7 Formularios · 8 Reservas · 9 Detalle de cancha
               10 Nosotros · 11 Contacto · 12 Footer · 13 Responsive
+              14 Componentes de la SPA (Vue): modal, tabla, contador, 404
    ========================================================== */
 
 /* ---------- 1. Tokens y base ---------- */
@@ -34,7 +35,11 @@ body {
   font-family: var(--body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  /* Macro-estructura con CSS Grid: header / main / footer */
+}
+
+/* Macro-estructura con CSS Grid: header / main / footer (#app es donde se monta Vue) */
+#app {
+  min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: minmax(0, 1fr);
@@ -93,26 +98,25 @@ h4 { font-size: 0.75rem; font-weight: 500; color: var(--muted); }
 .brand span { font: 900 1.25rem var(--display); letter-spacing: 0.12em; text-transform: uppercase; }
 .brand em { font-style: normal; color: var(--green); }
 
-/* El botón solo aparece si JavaScript cargó */
 .menu-toggle {
-  display: none; padding: 0.5rem 0.75rem; background: none; border: 1px solid var(--line);
+  padding: 0.5rem 0.75rem; background: none; border: 1px solid var(--line);
   border-radius: 6px; color: var(--text); font-size: 1.1rem; cursor: pointer;
 }
 .menu-toggle:hover { border-color: var(--green); color: var(--green); }
-.js .menu-toggle { display: inline-flex; }
+.menu-toggle { display: inline-flex; }
 
 .main-nav ul { display: flex; flex-direction: column; gap: 0.25rem; }
 .main-nav a:not(.btn) { display: block; padding: 0.75rem 0.5rem; color: var(--muted); font-weight: 500; }
 .main-nav a:not(.btn):hover { color: var(--green); }
-.main-nav a[aria-current="page"] { color: var(--green); }
+.main-nav a[aria-current="page"]:not(.btn), .main-nav a.activo:not(.btn) { color: var(--green); }
 .main-nav .btn { width: 100%; margin-top: 0.5rem; }
 
-/* Móvil: menú desplegable (solo si hay JavaScript) */
-.js .main-nav {
+/* Móvil: menú desplegable */
+.main-nav {
   display: none; position: absolute; top: 100%; left: 0; right: 0;
   padding: 1rem var(--gutter); background: var(--surface); border-bottom: 1px solid var(--line);
 }
-.js .main-nav.is-open { display: block; }
+.main-nav.is-open { display: block; }
 
 /* ---------- 4. Secciones y hero (Grid) ---------- */
 main > section:not(.hero) { padding: 4rem var(--gutter); }
@@ -227,7 +231,7 @@ input::placeholder, textarea::placeholder { color: rgba(241, 245, 240, 0.35); }
 input[type="date"], input[type="time"] { color-scheme: dark; }
 input:focus, select:focus, textarea:focus { outline: none; border-color: var(--green); }
 
-/* Retroalimentación visual (la agrega validacion.js) */
+/* Retroalimentación visual (clases que agrega useFormulario.js) */
 .error { color: var(--error); font-size: 0.8rem; }
 input.valido, select.valido, textarea.valido { border-color: var(--green); }
 input.invalido, select.invalido, textarea.invalido { border-color: var(--error); }
@@ -236,7 +240,7 @@ fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
 legend { padding: 0; margin-bottom: 0.5rem; }
 .times { display: flex; flex-direction: column; gap: 1rem; }
 .times .field { flex: 1; }
-.check { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.9rem; color: var(--muted); }
+.check { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0.6rem; font-size: 0.9rem; color: var(--muted); }
 .check input { margin-top: 0.3rem; accent-color: var(--green); }
 
 /* ---------- 8. Mis reservas ---------- */
@@ -348,8 +352,8 @@ address { display: flex; flex-direction: column; gap: 0.5rem; font-style: normal
 
 /* ---------- 13. ESCRITORIO ≥ 900px ---------- */
 @media (min-width: 900px) {
-  .js .menu-toggle { display: none; }
-  .main-nav, .js .main-nav {
+  .menu-toggle { display: none; }
+  .main-nav {
     display: block; position: static; padding: 0; background: none; border: 0;
   }
   .main-nav ul { flex-direction: row; align-items: center; gap: 0.25rem; }
@@ -376,6 +380,65 @@ address { display: flex; flex-direction: column; gap: 0.5rem; font-style: normal
   .card figure { height: 13rem; }
   .detalle__foto img { height: 26rem; }
 }
+
+/* ---------- 14. Componentes de la SPA (Vue) ---------- */
+main:focus { outline: none; }
+
+/* Contador de reservas pendientes en el menú */
+.main-nav a.mis-reservas-link { display: inline-flex; align-items: center; gap: 0.4rem; }
+.contador {
+  display: inline-grid; place-items: center; min-width: 1.3rem; height: 1.3rem; padding: 0 0.3rem;
+  background: var(--yellow); color: var(--bg); border-radius: 999px; font-size: 0.75rem; font-weight: 700;
+}
+
+/* Resumen del total en el formulario de reserva */
+.resumen { padding: 0.75rem 1rem; border: 1px dashed rgba(34, 197, 94, 0.4); border-radius: 8px; color: var(--muted); }
+.resumen strong { color: var(--green); }
+.panel__titulo { margin-bottom: 1rem; font-size: 1.6rem; }
+.panel .volver { margin: 1rem 0 0; }
+
+/* Ventana modal */
+.modal-fondo {
+  position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 1.25rem;
+  background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(3px);
+}
+.modal {
+  width: min(100%, 28rem); padding: 1.5rem; display: grid; gap: 1rem;
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+.modal h2 { font-size: 1.8rem; }
+.modal__cuerpo { color: var(--muted); }
+.modal__acciones { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.75rem; }
+.btn-peligro { background: var(--error); border-color: var(--error); color: var(--bg); }
+.btn-peligro:hover { background: #ef4444; border-color: #ef4444; }
+
+/* Tabla de "Mis reservas" (scroll horizontal en móvil) */
+.tabla-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.tabla { min-width: 46rem; }
+.tabla th, .tabla td { padding: 0.8rem 1rem; text-align: left; color: var(--text); font-weight: 400; white-space: nowrap; }
+.tabla thead th { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.tabla tbody th a { font-weight: 600; color: var(--green); }
+.tabla .etiqueta { margin: 0; }
+.tabla .acciones { display: flex; gap: 0.5rem; justify-content: flex-end; }
+
+.resumen-reservas { margin-bottom: 1.5rem; }
+.resumen-reservas .stat strong { font-size: 2.2rem; }
+.filtro-estado { gap: 0.5rem; padding: 0.75rem; }
+.chip-radio {
+  padding: 0.4rem 1rem; border: 1px solid var(--line); border-radius: 999px;
+  color: var(--muted); font-size: 0.9rem; cursor: pointer;
+}
+.chip-radio.activo { background: var(--green); border-color: var(--green); color: var(--bg); font-weight: 600; }
+.chip-radio:focus-within { outline: 2px solid var(--green); outline-offset: 2px; }
+.vacio { display: grid; gap: 1rem; justify-items: start; }
+
+/* Página 404 */
+.no-encontrada { display: grid; gap: 1rem; justify-items: start; min-height: 50vh; align-content: center; }
+.no-encontrada p:not(.kicker) { color: var(--muted); }
+
+/* Animación del aviso (toast) */
+.aparecer-enter-active, .aparecer-leave-active { transition: opacity 0.3s, transform 0.3s; }
+.aparecer-enter-from, .aparecer-leave-to { opacity: 0; transform: translate(-50%, 1rem); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

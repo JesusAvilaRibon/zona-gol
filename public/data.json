@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "nombre": "Cancha Bernabéu",
+    "propietario": "Carlos Mendoza",
+    "rol": "Administrador",
+    "direccion": "Cra. 9 #117, Barrio Bosque Centro",
+    "capacidad": "5 vs 5",
+    "precio": 60000,
+    "imagen": "photo-1704633785114-52104ce3d626",
+    "descripcion": "Cancha sintética 4G en excelente estado, con iluminación LED para partidos nocturnos. Ideal para grupos pequeños y partidos rápidos.",
+    "horario": "Lun–Dom 7:00 AM – 11:00 PM",
+    "caracteristicas": ["Césped sintético 4G", "Iluminación LED", "Kiosko", "Servicio de bar", "Paca de agua de 350 ml gratis"],
+    "horas": ["08:00", "09:00", "10:00", "14:00", "15:00", "19:00", "20:00"]
+  },
+  {
+    "id": 2,
+    "nombre": "Cancha Metropolitano",
+    "propietario": "Andrea López",
+    "rol": "Administradora",
+    "direccion": "Sahagún, Córdoba",
+    "capacidad": "7 vs 7",
+    "precio": 90000,
+    "imagen": "photo-1630420598913-44208d36f9af",
+    "descripcion": "Amplia cancha para equipos medianos con tribuna lateral. Perfecta para partidos organizados y ligas locales.",
+    "horario": "Lun–Dom 7:00 AM – 11:00 PM",
+    "caracteristicas": ["Césped sintético", "Tribuna lateral", "Camerinos con duchas", "Iluminación LED"],
+    "horas": ["07:00", "11:00", "13:00", "16:00", "17:00", "21:00"]
+  },
+  {
+    "id": 3,
+    "nombre": "Cancha La Norteña",
+    "propietario": "Jhon Rojas",
+    "rol": "Administrador",
+    "direccion": "Sahagún, Córdoba",
+    "capacidad": "11 vs 11",
+    "precio": 150000,
+    "imagen": "photo-1517747614396-d21a78b850e8",
+    "descripcion": "La cancha más grande de la zona, con medidas reglamentarias. Perfecta para torneos y partidos oficiales de fútbol 11.",
+    "horario": "Lun–Dom 7:00 AM – 11:00 PM",
+    "caracteristicas": ["Medidas reglamentarias", "Iluminación LED de alta potencia", "2 camerinos", "Estacionamiento amplio"],
+    "horas": ["08:00", "10:00", "15:00", "18:00", "20:00"]
+  }
+]
